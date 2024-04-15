@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<PlutoColumnGroup> columnGroups = [];
-
+  late PlutoGridStateManager stateManager;
   List<PlutoColumn> polCol = [];
   List<PlutoRow> polRows = [];
   @override
@@ -155,6 +155,32 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(
+                    polRows[i].cells['ils']!.value.toString().isEmpty
+                        ? "0"
+                        : polRows[i].cells['ils']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الدولار',
@@ -162,6 +188,33 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          print("object");
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(
+                    polRows[i].cells['usd']!.value.toString().isEmpty
+                        ? "0"
+                        : polRows[i].cells['usd']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
@@ -169,6 +222,29 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils1']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الدولار',
@@ -176,6 +252,29 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd1']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
@@ -183,6 +282,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'ils2',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils2']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الدولار',
@@ -190,6 +312,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'usd2',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd2']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
@@ -197,6 +342,29 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils3']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الدولار',
@@ -204,6 +372,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'usd3',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd3']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
@@ -211,6 +402,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'ils4',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils4']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         enableEditingMode: true,
@@ -218,6 +432,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'usd4',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd4']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
@@ -225,6 +462,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'ils5',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils5']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الدولار',
@@ -232,6 +492,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'usd5',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd5']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         enableEditingMode: true,
@@ -239,6 +522,29 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'ils6',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils6']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الدولار',
@@ -246,6 +552,29 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd6']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
@@ -253,6 +582,29 @@ class _MyHomePageState extends State<MyHomePage> {
         type: PlutoColumnType.text(),
         enableEditingMode: true,
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils7']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الدولار',
@@ -260,12 +612,58 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd7']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
         field: 'ils8',
         enableEditingMode: true,
         type: PlutoColumnType.text(),
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils8']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
@@ -274,18 +672,87 @@ class _MyHomePageState extends State<MyHomePage> {
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd8']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
       ),
       PlutoColumn(
         title: 'الشيكل',
         field: 'ils9',
         enableEditingMode: true,
         type: PlutoColumnType.text(),
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['ils9']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         title: 'الدولار',
         enableEditingMode: true,
         field: 'usd9',
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum += double.parse(polRows[i].cells['usd9']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
@@ -294,11 +761,59 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'ils10',
         type: PlutoColumnType.text(),
         enableEditingMode: true,
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['ils10']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         title: 'الدولار',
         field: 'usd10',
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['usd10']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
         enableEditingMode: true,
@@ -306,6 +821,30 @@ class _MyHomePageState extends State<MyHomePage> {
       PlutoColumn(
         title: 'الشيكل',
         field: 'ils11',
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['ils11']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
@@ -314,12 +853,60 @@ class _MyHomePageState extends State<MyHomePage> {
         title: 'الدولار',
         enableEditingMode: true,
         field: 'usd11',
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['usd11']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         title: 'الشيكل',
         field: 'ils12',
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['ils12']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
@@ -329,17 +916,89 @@ class _MyHomePageState extends State<MyHomePage> {
         field: 'usd12',
         enableEditingMode: true,
         type: PlutoColumnType.text(),
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['usd12']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         title: 'الشيكل',
         field: 'ils13',
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['ils13']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} ILS",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         type: PlutoColumnType.text(),
         enableEditingMode: true,
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         title: 'الدولار',
+        footerRenderer: (rendererContext) {
+          return PlutoAggregateColumnFooter(
+            rendererContext: rendererContext,
+            type: PlutoAggregateColumnType.sum,
+            format: '#',
+            alignment: Alignment.centerRight,
+            titleSpanBuilder: (text) {
+              double sum = 0;
+              for (int i = 0; i < polRows.length; i++) {
+                sum +=
+                    double.parse(polRows[i].cells['usd13']!.value.toString());
+              }
+              return [
+                TextSpan(
+                    text: "${sum.toString()} USD",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      // fontSize: 18,
+                      color: Colors.black,
+                    )),
+              ];
+            },
+          );
+        },
         field: 'usd13',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
@@ -566,6 +1225,16 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final double usdPer = 3.6;
+  void _handleColumnTap(PlutoColumn column) {
+    int currentIndex = polCol.indexOf(column);
+    if (currentIndex < polCol.length - 1) {
+      setState(() {
+        polCol[currentIndex + 1].type = PlutoColumnType.text();
+      });
+    }
+  }
+
   void _fillWithData() {
     final Random random = Random();
     int count = 0;
@@ -655,73 +1324,6 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       });
     });
-    // polRows.insert(
-    //     0,
-    //     PlutoRow(
-    //       cells: {
-    //         'column2': PlutoCell(value: ''),
-    //         'column3': PlutoCell(value: ''),
-    //         'column4': PlutoCell(value: ''),
-    //         'column5': PlutoCell(value: ''),
-    //         'column6': PlutoCell(value: "النفقات"),
-    //         'ils': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils1': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd1': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils2': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd2': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils3': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd3': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils4': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd4': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils5': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd5': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils6': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd6': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils7': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd7': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils8': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd8': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils9': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd9': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils10': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd10': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils11': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd11': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils12': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd12': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'ils13': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //         'usd13': PlutoCell(
-    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
-    //       },
-    //     ));
   }
 
   @override
@@ -747,10 +1349,21 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SizedBox(
         height: height * 0.79,
         child: TableComponent(
+          onLoaded: (event) {
+            stateManager = event.stateManager;
+          },
           mode: PlutoGridMode.normal,
           plCols: polCol,
           columnGroups: columnGroups,
           polRows: polRows,
+          onChange: (event) {
+            print("1 ${event.column.field}");
+            if (event.column.field.contains('usd')) {
+              chnageFromUSDToILS(event);
+            } else if (event.column.field.contains('ils')) {
+              changeFromILSToUSD(event);
+            }
+          },
         ),
       ),
       // floatingActionButton: FloatingActionButton(
@@ -759,5 +1372,100 @@ class _MyHomePageState extends State<MyHomePage> {
       //   child: const Icon(Icons.add),
       // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  changeFromILSToUSD(PlutoGridOnChangedEvent event) {
+    if (event.column.field == "ils") {
+      event.row.cells['usd']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils1") {
+      event.row.cells['usd1']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils2") {
+      event.row.cells['usd2']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils3") {
+      event.row.cells['usd3']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils4") {
+      event.row.cells['usd4']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils5") {
+      event.row.cells['usd5']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils6") {
+      event.row.cells['usd6']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils7") {
+      event.row.cells['usd7']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils8") {
+      event.row.cells['usd8']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils9") {
+      event.row.cells['usd9']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils10") {
+      event.row.cells['usd10']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils11") {
+      event.row.cells['usd11']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils12") {
+      event.row.cells['usd12']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    } else if (event.column.field == "ils13") {
+      event.row.cells['usd13']!.value =
+          double.parse(event.value.toString()) / usdPer;
+    }
+    setState(() {});
+  }
+
+  chnageFromUSDToILS(PlutoGridOnChangedEvent event) {
+    if (event.column.field == "usd") {
+      event.row.cells['ils']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd1") {
+      event.row.cells['ils1']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd2") {
+      event.row.cells['ils2']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd3") {
+      event.row.cells['ils3']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd4") {
+      event.row.cells['ils4']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd5") {
+      event.row.cells['ils5']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd6") {
+      event.row.cells['ils6']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd7") {
+      event.row.cells['ils7']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd8") {
+      event.row.cells['ils8']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd9") {
+      event.row.cells['ils9']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd10") {
+      event.row.cells['ils10']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd11") {
+      event.row.cells['ils11']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd12") {
+      event.row.cells['ils12']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    } else if (event.column.field == "usd13") {
+      event.row.cells['ils13']!.value =
+          double.parse(event.value.toString()) * usdPer;
+    }
+    setState(() {});
+    // polRows[event.rowIdx].cells.;
   }
 }
