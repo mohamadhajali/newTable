@@ -568,20 +568,23 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _fillWithData() {
     final Random random = Random();
-
+    int count = 0;
     setState(() {
       polRows = List.generate(100, (index) {
         final int randomIndex = random.nextInt(arabicExpenseNames.length);
         final int sectionNumber = index ~/ 10 + 1;
         final int rowInSection = index % 10 + 1;
+        if (rowInSection == 10) {
+          count = 0;
+        }
         final String value1 = (rowInSection == 1) ? '$sectionNumber' : '';
 
         final String value2 =
             (rowInSection == 2) ? '$sectionNumber$sectionNumber' : '';
         final String value3 =
-            (rowInSection == 3) ? '$sectionNumber$rowInSection' : '';
+            (rowInSection == 3) ? '$sectionNumber${rowInSection - 1}' : '';
         final String value4 =
-            (rowInSection >= 4) ? '$sectionNumber$rowInSection' : '';
+            (rowInSection >= 4) ? '$sectionNumber${count++}' : '';
         return PlutoRow(
           cells: {
             'column2': PlutoCell(value: value1),
