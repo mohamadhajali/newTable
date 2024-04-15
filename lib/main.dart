@@ -171,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -205,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -235,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -265,7 +265,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -295,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -325,7 +325,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -355,7 +355,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -385,7 +385,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -415,7 +415,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -445,7 +445,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -475,7 +475,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -505,7 +505,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -535,7 +535,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -565,7 +565,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -595,7 +595,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -625,7 +625,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -654,7 +654,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -685,7 +685,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -714,7 +714,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -743,7 +743,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -775,7 +775,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -804,7 +804,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -835,7 +835,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -867,7 +867,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -897,7 +897,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -930,7 +930,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -959,7 +959,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
               return [
                 TextSpan(
-                    text: "${sum.toString()} ILS",
+                    text: "${formatDouble(sum)} ILS",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -987,9 +987,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 sum +=
                     double.parse(polRows[i].cells['usd13']!.value.toString());
               }
+              
               return [
                 TextSpan(
-                    text: "${sum.toString()} USD",
+                    text: "${formatDouble(sum)} USD",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       // fontSize: 18,
@@ -1324,6 +1325,19 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       });
     });
+  }
+String formatDouble(double value) {
+    String formattedValue = value.toStringAsFixed(2);
+
+    while (formattedValue.endsWith('0')) {
+      formattedValue = formattedValue.substring(0, formattedValue.length - 1);
+    }
+
+    if (formattedValue.endsWith('.')) {
+      formattedValue = formattedValue.substring(0, formattedValue.length - 1);
+    }
+
+    return formattedValue;
   }
 
   @override
