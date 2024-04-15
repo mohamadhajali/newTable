@@ -574,7 +574,7 @@ class _MyHomePageState extends State<MyHomePage> {
         final int randomIndex = random.nextInt(arabicExpenseNames.length);
         final int sectionNumber = index ~/ 10 + 1;
         final int rowInSection = index % 10 + 1;
-        if (rowInSection == 10) {
+        if (rowInSection > 10) {
           count = 0;
         }
         final String value1 = (rowInSection == 1) ? '$sectionNumber' : '';
