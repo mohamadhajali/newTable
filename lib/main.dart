@@ -1347,7 +1347,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: SizedBox(
-        height: height * 0.79,
+        height: height * 0.9,
         child: TableComponent(
           onLoaded: (event) {
             stateManager = event.stateManager;
