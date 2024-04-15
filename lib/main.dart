@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
       PlutoColumn(
         frozen: PlutoColumnFrozen.start,
         width: 50,
-        title: 'Column2',
+        title: '',
         field: 'column2',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
@@ -121,14 +121,14 @@ class _MyHomePageState extends State<MyHomePage> {
       PlutoColumn(
         frozen: PlutoColumnFrozen.start,
         width: 50,
-        title: 'Column3',
+        title: '',
         field: 'column3',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         width: 50,
-        title: 'Column4',
+        title: '',
         frozen: PlutoColumnFrozen.start,
         field: 'column4',
         type: PlutoColumnType.text(),
@@ -136,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       PlutoColumn(
         width: 50,
-        title: 'Column5',
+        title: '',
         frozen: PlutoColumnFrozen.start,
         field: 'column5',
         type: PlutoColumnType.text(),
@@ -159,8 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
       PlutoColumn(
         title: 'الدولار',
         field: 'usd',
-            enableEditingMode: true,
-
+        enableEditingMode: true,
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
@@ -168,7 +167,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: 'الشيكل',
         field: 'ils1',
         enableEditingMode: true,
-
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
@@ -176,14 +174,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: 'الدولار',
         field: 'usd1',
         enableEditingMode: true,
-
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         title: 'الشيكل',
         enableEditingMode: true,
-
         field: 'ils2',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
@@ -191,7 +187,6 @@ class _MyHomePageState extends State<MyHomePage> {
       PlutoColumn(
         title: 'الدولار',
         enableEditingMode: true,
-
         field: 'usd2',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
@@ -200,14 +195,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: 'الشيكل',
         field: 'ils3',
         enableEditingMode: true,
-
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
       ),
       PlutoColumn(
         title: 'الدولار',
         enableEditingMode: true,
-
         field: 'usd3',
         type: PlutoColumnType.text(),
         titleTextAlign: PlutoColumnTextAlign.center,
@@ -542,9 +535,7 @@ class _MyHomePageState extends State<MyHomePage> {
               );
               group.children!.removeAt(i);
               group.children!.add(updatedGroup);
-              setState(() {
-                
-              });
+              setState(() {});
             }
           }
         }
@@ -581,14 +572,26 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       polRows = List.generate(100, (index) {
         final int randomIndex = random.nextInt(arabicExpenseNames.length);
+        final int sectionNumber = index ~/ 10 + 1;
+        final int rowInSection = index % 10 + 1;
+        final String value1 = (rowInSection == 1) ? '$sectionNumber' : '';
 
+        final String value2 =
+            (rowInSection == 2) ? '$sectionNumber$sectionNumber' : '';
+        final String value3 =
+            (rowInSection == 3) ? '$sectionNumber$rowInSection' : '';
+        final String value4 =
+            (rowInSection >= 4) ? '$sectionNumber$rowInSection' : '';
         return PlutoRow(
           cells: {
-            'column2': PlutoCell(value: ""),
-            'column3': PlutoCell(value: ""),
-            'column4': PlutoCell(value: ""),
-            'column5': PlutoCell(value: ""),
-            'column6': PlutoCell(value: arabicExpenseNames[randomIndex]),
+            'column2': PlutoCell(value: value1),
+            'column3': PlutoCell(value: value2),
+            'column4': PlutoCell(value: value3),
+            'column5': PlutoCell(value: value4),
+            'column6': PlutoCell(
+                value: sectionNumber == 1 && rowInSection == 1
+                    ? "النفقات"
+                    : arabicExpenseNames[randomIndex]),
             'ils': PlutoCell(
                 value: (random.nextDouble() * 100).toStringAsFixed(2)),
             'usd': PlutoCell(
@@ -649,6 +652,73 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       });
     });
+    // polRows.insert(
+    //     0,
+    //     PlutoRow(
+    //       cells: {
+    //         'column2': PlutoCell(value: ''),
+    //         'column3': PlutoCell(value: ''),
+    //         'column4': PlutoCell(value: ''),
+    //         'column5': PlutoCell(value: ''),
+    //         'column6': PlutoCell(value: "النفقات"),
+    //         'ils': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils1': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd1': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils2': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd2': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils3': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd3': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils4': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd4': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils5': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd5': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils6': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd6': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils7': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd7': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils8': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd8': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils9': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd9': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils10': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd10': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils11': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd11': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils12': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd12': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'ils13': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //         'usd13': PlutoCell(
+    //             value: (random.nextDouble() * 100).toStringAsFixed(2)),
+    //       },
+    //     ));
   }
 
   @override
