@@ -116,14 +116,25 @@ class _AccountScreenState extends State<AccountScreen> {
     polRows[i].cells['usd']!.value = totalUsd;
 
     // Traverse upwards to calculate parent sums
+    int startIndexForSumLevel1 = 0;
+    for (int j = i; j < polRows.length; j++) {
+      if (polRows[j].cells['txtTreenode']!.value !=
+          polRows[i].cells['txtTreenode']!.value) {
+        startIndexForSumLevel1 = j - 1;
+        break;
+      }
+    }
     for (int j = i - 1; j >= 0; j--) {
       if (polRows[j].cells['bolIsparent']!.value == 1) {
         double parentTotalIls = 0;
         double parentTotalUsd = 0;
 
         // Loop through the children of the parent and calculate the sum
-        for (int k = j + 1; k <= i; k++) {
-          if (polRows[k].cells['bolIsparent']!.value != 1) {
+        for (int k = j + 1; k <= startIndexForSumLevel1; k++) {
+          if (polRows[k].cells['bolIsparent']!.value != 1 &&
+              polRows[k].cells['txtParentcode']!.value ==
+                  polRows[j].cells['txtCode']!.value) {
+            // Ensure child's parent code matches current parent's code
             parentTotalIls +=
                 double.parse(polRows[k].cells['ils']!.value.toString());
             parentTotalUsd +=
@@ -134,6 +145,104 @@ class _AccountScreenState extends State<AccountScreen> {
         // Set the sum in the parent row
         polRows[j].cells['ils']!.value = parentTotalIls;
         polRows[j].cells['usd']!.value = parentTotalUsd;
+      }
+    }
+
+    // Calculate sum of non-parent rows for the current account
+    double sumIls = 0;
+    double sumUsd = 0;
+
+    for (int j = 0; j < polRows.length; j++) {
+      if (polRows[j].cells['bolIsparent']!.value != 1 &&
+          polRows[j].cells['txtTreenode']!.value ==
+              polRows[i].cells['txtTreenode']!.value) {
+        // Ensure child's tree node matches current node
+        sumIls += double.parse(polRows[j].cells['ils']!.value.toString());
+        sumUsd += double.parse(polRows[j].cells['usd']!.value.toString());
+      }
+    }
+
+    // Set the sum in the parent row if it's a level 1 account
+    // if (polRows[i].cells['intLevel']!.value == 1) {
+    //   for (int j = 0; j < polRows.length; j++) {
+    //     if (polRows[j].cells['bolIsparent']!.value == 1 &&
+    //         polRows[j].cells['txtTreenode']!.value ==
+    //             polRows[i].cells['txtTreenode']!.value) {
+    //       // Ensure parent's tree node matches current node
+    //       polRows[j].cells['ils']!.value = sumIls;
+    //       polRows[j].cells['usd']!.value = sumUsd;
+    //       break;
+    //     }
+    //   }
+    // }
+    getTotalsForLevel1(i);
+
+    // Initialize totals for ils and usd to 0
+    //////////////
+    // for (int j = i; j >= 0; j--) {
+    //   if (polRows[j].cells['bolIsparent']!.value == 1) {
+    //     double parentTotalIls = 0;
+    //     double parentTotalUsd = 0;
+
+    //     // Loop through the children of the parent and calculate the sum
+    //     for (int k = j + 1; k <= i; k++) {
+    //       if (polRows[k].cells['bolIsparent']!.value != 1) {
+    //         parentTotalIls +=
+    //             double.parse(polRows[k].cells['ils']!.value.toString());
+    //         parentTotalUsd +=
+    //             double.parse(polRows[k].cells['usd']!.value.toString());
+    //       }
+    //     }
+
+    //     // Set the sum in the parent row
+    //     polRows[j].cells['ils']!.value = parentTotalIls;
+    //     polRows[j].cells['usd']!.value = parentTotalUsd;
+    //   }
+    // }
+  }
+
+  getTotalsForLevel1(int i) {
+    double totalIls = 0;
+    double totalUsd = 0;
+    // Loop through the branches and sum up the values for ils and usd
+    for (int j = 0; j < numOfBranch; j++) {
+      totalIls += double.parse(polRows[i].cells['ils$j']!.value.toString());
+      totalUsd += double.parse(polRows[i].cells['usd$j']!.value.toString());
+    }
+    // Set the totals in the main row
+    polRows[i].cells['ils']!.value = totalIls;
+    polRows[i].cells['usd']!.value = totalUsd;
+
+    // Find the sum of non-parent accounts for the current account's "txtTreenode"
+    double treeNodeSumIls = 0;
+    double treeNodeSumUsd = 0;
+    int startIndexForSumLevel1 = 0;
+    for (int j = i; j < polRows.length; j++) {
+      if (polRows[j].cells['txtTreenode']!.value !=
+          polRows[i].cells['txtTreenode']!.value) {
+        startIndexForSumLevel1 = j;
+        break;
+      }
+    }
+    for (int k = startIndexForSumLevel1; k >= 0; k--) {
+      if (polRows[k].cells['txtTreenode']!.value ==
+              polRows[i].cells['txtTreenode']!.value &&
+          polRows[k].cells['bolIsparent']!.value != 1) {
+        treeNodeSumIls +=
+            double.parse(polRows[k].cells['ils']!.value.toString());
+        treeNodeSumUsd +=
+            double.parse(polRows[k].cells['usd']!.value.toString());
+      }
+    }
+    print(4);
+
+    // Set the sum in the parent row at level 1
+
+    for (int j = i; j >= 0; j--) {
+      if (polRows[j].cells['intLevel']!.value == 1) {
+        polRows[j].cells['ils']!.value = treeNodeSumIls;
+        polRows[j].cells['usd']!.value = treeNodeSumUsd;
+        break;
       }
     }
   }
@@ -582,6 +691,9 @@ class _AccountScreenState extends State<AccountScreen> {
       }
       cells['bolIsparent'] = PlutoCell(value: account.account!.bolIsparent);
       cells['intLevel'] = PlutoCell(value: account.account!.intLevel);
+      cells['txtParentcode'] = PlutoCell(value: account.account!.txtParentcode);
+      cells['txtTreenode'] = PlutoCell(value: account.account!.txtTreenode);
+      cells['txtCode'] = PlutoCell(value: account.account!.txtCode);
       // Add the populated row to the list
       // rows.add(PlutoRow(cells: cells));
       stateManager.appendRows([PlutoRow(cells: cells)]);
